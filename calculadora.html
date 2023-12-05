@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="calculator">
+    <h1>Calculadora</h1>
+    <form onsubmit="calcularResultado(); return false;">
+        <label for="numero1">Digite o primeiro número:</label>
+        <input type="text" id="numero1" name="numero1" required>
+
+        <label for="numero2">Digite o segundo número:</label>
+        <input type="text" id="numero2" name="numero2" required>
+
+        <label for="operacao">Escolha a operação:</label>
+        <select id="operacao" name="operacao" required>
+            <option value="adição">Adição</option>
+            <option value="subtração">Subtração</option>
+            <option value="multiplicação">Multiplicação</option>
+            <option value="divisão">Divisão</option>
+        </select>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calculadora(numero1, numero2, operacao) {
+            let resultado;
+
+            switch (operacao.toLowerCase()) {
+                case 'adição':
+                    resultado = numero1 + numero2;
+                    break;
+                case 'subtração':
+                    resultado = numero1 - numero2;
+                    break;
+                case 'multiplicação':
+                    resultado = numero1 * numero2;
+                    break;
+                case 'divisão':
+                    if (numero2 !== 0) {
+                        resultado = numero1 / numero2;
+                    } else {
+                        throw new Error('Divisão por zero não é permitida.');
+                    }
+                    break;
+                default:
+                    throw new Error('Operação inválida');
+            }
+
+            return resultado;
+        }
+
+        function calcularResultado() {
+            let numero1 = parseFloat(document.getElementById('numero1').value);
+            let numero2 = parseFloat(document.getElementById('numero2').value);
+            let operacao = document.getElementById('operacao').value;
+
+            try {
+                if (isNaN(numero1) || isNaN(numero2)) {
+                    throw new Error('Por favor, insira números válidos.');
+                }
+
+                let resultado = calculadora(numero1, numero2, operacao);
+
+                document.getElementById('resultado').innerHTML = `O resultado da ${operacao} de ${numero1} e ${numero2} é: ${resultado}`;
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = `<span class="error">${error.message}</span>`;
+            }
+        }
+    </script>
+</div>
+
+</body>
+</html>
