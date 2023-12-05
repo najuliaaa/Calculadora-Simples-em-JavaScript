@@ -11,3 +11,7 @@ Esta é uma calculadora simples desenvolvida em HTML, CSS e JavaScript. Permite 
 ## Personalização
 
 Sinta-se à vontade para personalizar e expandir este projeto conforme suas necessidades. Você pode adicionar mais funcionalidades, melhorar o design ou até mesmo integrar com outras tecnologias.
+
+## Foto do Projeto
+
+![Captura de tela 2023-12-05 194644](https://github.com/najuliaaa/Calculadora-Simples-em-JavaScript/assets/137189190/f26cf140-22d3-4f78-893e-22d3f315efbc)
